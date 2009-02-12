@@ -1,0 +1,63 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    version="1.0">
+
+    <persistence-unit name="eclipselinkInMemory" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.logging.level" value="INFO" />
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform" />
+            <property name="eclipselink.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+            <property name="eclipselink.jdbc.url" value="jdbc:hsqldb:mem:mem:aname" />
+            <property name="eclipselink.jdbc.user" value="sa" />
+            <property name="eclipselink.jdbc.password" value="" />
+            <property name="eclipselink.ddl-generation" value="create-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+            
+        </properties>
+
+        <class>org.gatherdata.forms.dao.jpa.model.JpaFlatForm</class>
+        <class>org.gatherdata.forms.dao.jpa.model.JpaRenderedValue</class>
+
+    </persistence-unit>
+
+    <persistence-unit name="hibernateServer" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <properties>
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="false" />
+
+            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
+            <property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://localhost/test" />
+            <property name="hibernate.connection.username" value="sa" />
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+
+        <class>org.gatherdata.forms.dao.jpa.model.JpaFlatForm</class>
+        <class>org.gatherdata.forms.dao.jpa.model.JpaRenderedValue</class>
+
+    </persistence-unit>
+    
+    
+    <persistence-unit name="hibernateInMemory" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <properties>
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="false" />
+
+            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
+            <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:mem:aname" />
+            <property name="hibernate.connection.username" value="sa" />
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+
+        <class>org.gatherdata.forms.dao.jpa.model.JpaFlatForm</class>
+        <class>org.gatherdata.forms.dao.jpa.model.JpaRenderedValue</class>
+
+    </persistence-unit>
+
+</persistence>
