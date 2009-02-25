@@ -37,13 +37,13 @@ public class FlatFormEnvelopeTransformer implements EnvelopeTransformer {
 	public Collection<Envelope> transform(Envelope source) {
 		Collection<Envelope> resultSet = null;
 
-		if (MimeTypes.TEXT_XML.equals(source.getType())) {
+		if (MimeTypes.equals(MimeTypes.TEXT_XML, source.getType())) {
 			resultSet = new Vector<Envelope>();
 			
 			String rawXml = source.getContents().toString();
 
 			FlatForm asFlatForm = xmlTransformer.transform(rawXml);
-			
+
 			URI formUid = FlatFormUriFactory.createUriFor(asFlatForm);
 			Seal formSeal = Seal.createSealFor(asFlatForm);
 			

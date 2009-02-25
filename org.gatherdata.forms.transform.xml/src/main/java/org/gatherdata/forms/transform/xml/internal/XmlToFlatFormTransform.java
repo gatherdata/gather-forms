@@ -18,6 +18,7 @@ import org.gatherdata.core.io.MimeTypes;
 import org.gatherdata.core.model.Envelope;
 import org.gatherdata.core.spi.EnvelopeTransformer;
 import org.gatherdata.forms.core.model.FlatForm;
+import org.gatherdata.forms.core.model.FlatFormUriFactory;
 import org.gatherdata.forms.core.model.GenericFlatForm;
 import org.gatherdata.forms.core.model.GenericRenderedValue;
 import org.gatherdata.forms.core.model.RenderedValue;
@@ -43,6 +44,7 @@ public class XmlToFlatFormTransform extends DefaultHandler {
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
+		currentForm.setCbid(FlatFormUriFactory.createUriFor(currentForm));
 		return currentForm;
 	}
 
