@@ -66,23 +66,23 @@
     <module>org.gatherdata.forms.core</module>
     <module>org.gatherdata.forms.dao.pojo</module>
     <module>org.gatherdata.forms.dao.db4o</module>
+    <module>org.gatherdata.forms.transform.xhtml</module>
   </modules>
 
-
   <profiles>
-      <profile>
-          <id>db4o</id>
-          <activation>
-              <activeByDefault>true</activeByDefault>
-          </activation>
-          <modules>
-              <module>org.gatherdata.forms.dao.db4o</module>
-          </modules>
-          <properties>
-              <dao.gather-dependencies>gather-commons.db4o</dao.gather-dependencies>
-              <dao.provision>mvn:org.gatherdata.gather-forms/org.gatherdata.forms.dao.db4o/${gather-forms.version}</dao.provision>
-          </properties>
-      </profile>
+    <profile>
+      <id>db4o</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>org.gatherdata.forms.dao.db4o</module>
+      </modules>
+      <properties>
+        <dao.gather-dependencies>gather-commons.db4o</dao.gather-dependencies>
+        <dao.provision>mvn:org.gatherdata.gather-forms/org.gatherdata.forms.dao.db4o/${gather-forms.version}</dao.provision>
+      </properties>
+    </profile>
   </profiles>
 
   <build>
