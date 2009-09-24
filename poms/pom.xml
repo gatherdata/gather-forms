@@ -66,6 +66,18 @@
               <version>${guice.version}</version>
               <scope>provided</scope>
           </dependency>
+          <dependency>
+              <groupId>org.apache.servicemix.bundles</groupId>
+              <artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
+              <version>${aopalliance.version}</version>
+              <scope>provided</scope>
+          </dependency>
+          <dependency>
+              <groupId>org.ops4j.pax.logging</groupId>
+              <artifactId>pax-logging-api</artifactId>
+              <version>${pax-logging.version}</version>
+              <optional>true</optional>
+          </dependency>
           <dependency> 
               <groupId>org.eclipse.persistence</groupId> 
               <artifactId>javax.persistence</artifactId> 

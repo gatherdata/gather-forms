@@ -1,10 +1,14 @@
 package org.gatherdata.forms.dao.pojo.osgi;
 
-import java.util.Dictionary;
-import java.util.Properties;
+import static com.google.inject.Guice.createInjector;
+import static org.ops4j.peaberry.Peaberry.osgiModule;
 
+import org.gatherdata.forms.core.spi.FormTemplateDao;
+import org.ops4j.peaberry.Export;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+
+import com.google.inject.Inject;
 
 /**
  * Extension of the default OSGi bundle activator
@@ -12,12 +16,16 @@ import org.osgi.framework.BundleContext;
 public final class OSGiActivator
     implements BundleActivator
 {
+	@Inject
+	Export<FormTemplateDao> dao;
+	
     /**
      * Called whenever the OSGi framework starts our bundle
      */
     public void start( BundleContext bc )
         throws Exception
     {
+		createInjector(osgiModule(bc), new GuiceBindingModule()).injectMembers(this);
     }
 
     /**
