@@ -1,13 +1,12 @@
-package org.gatherdata.forms.core.osgi;
+package org.gatherdata.forms.dao.pojo.osgi;
 
 import static org.ops4j.peaberry.Peaberry.service;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 
-import org.gatherdata.forms.core.internal.FormServiceImpl;
-import org.gatherdata.forms.core.spi.FormService;
 import org.gatherdata.forms.core.spi.FormTemplateDao;
+import org.gatherdata.forms.dao.pojo.internal.FormTemplateDaoPojo;
 import org.ops4j.peaberry.Export;
 
 import static org.ops4j.peaberry.util.TypeLiterals.iterable;
@@ -21,14 +20,14 @@ import static org.ops4j.peaberry.util.TypeLiterals.export;
  */
 public class GuiceBindingModule extends AbstractModule {
 
-	
-	@Override 
-	protected void configure() {
-		// imports
-		bind(FormTemplateDao.class).toProvider(service(FormTemplateDao.class).single());
-		
-		// exports
-		bind(export(FormService.class)).toProvider(service(FormServiceImpl.class).export());
-		
-	}
+    
+    @Override 
+    protected void configure() {
+        // imports
+        //bind(ArchiverDao.class).toProvider(service(ArchiverDao.class).single());
+        
+        // exports
+        bind(export(FormTemplateDao.class)).toProvider(service(FormTemplateDaoPojo.class).export());
+        
+    }
 }
