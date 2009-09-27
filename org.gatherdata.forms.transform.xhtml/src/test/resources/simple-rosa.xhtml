@@ -1,0 +1,45 @@
+<xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml"
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:saxon="http://saxon.sf.net/"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:xxi="http://orbeon.org/oxf/xml/xinclude"
+            xmlns:sql="http://orbeon.org/oxf/xml/sql"
+            xmlns:xxforms="http://orbeon.org/oxf/xml/xforms"
+            xmlns:exforms="http://www.exforms.org/exf/1-0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:fr="http://orbeon.org/oxf/xml/form-runner"
+            xmlns:ev="http://www.w3.org/2001/xml-events"
+            xmlns:xforms="http://www.w3.org/2002/xforms">
+    <xhtml:head>
+        <xhtml:title>Simple Form</xhtml:title>
+
+        <xforms:model>
+            <xforms:instance>
+                <form>
+                    <one-section>
+                        <name/>
+                    </one-section>
+                </form>
+            </xforms:instance>
+            
+            <xforms:bind id="name-bind" nodeset="one-section/name" name="name"/>
+            
+            <jr:itext>
+                <jr:translation lang="en">
+                    <jr:text id="one-section">
+                        <jr:value>One Question</jr:value>
+                    </jr:text>
+                    <jr:text id="name">
+                        <jr:value>What is your name?</jr:value>
+                    </jr:text>
+                </jr:translation>
+            </jr:itext>
+        </xforms:model>
+    </xhtml:head>
+    <xhtml:body>
+        <xforms:input bind="name-bind" id="name-control">
+            <xforms:label ref="jr:itext('name')"/>
+        </xforms:input>
+    </xhtml:body>
+</xhtml:html>
