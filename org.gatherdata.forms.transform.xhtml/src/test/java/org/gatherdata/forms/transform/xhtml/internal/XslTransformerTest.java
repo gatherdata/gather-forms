@@ -51,6 +51,16 @@ public class XslTransformerTest {
         assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));
     }
 
+    @Test
+    public void shouldTransformFluSurveyToRosa() throws IOException, TransformerException {
+        String actualResult = transform("flu-orbeon.xhtml", "orb2rosa.xsl");
+        String expectedResult = readResource("flu-rosa.xhtml");
+        writeTextFile(actualResult, "flu-result.xhtml");
+
+        assertThat(actualResult, notNullValue());
+        assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));
+    }
+
 
     public String transform(String inputResourceName, String xslResourceName) throws TransformerException, IOException {
         Reader originalInput = new InputStreamReader(getResource(inputResourceName)

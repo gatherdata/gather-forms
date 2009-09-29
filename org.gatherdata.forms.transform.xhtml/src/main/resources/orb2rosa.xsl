@@ -37,13 +37,22 @@
                                 <xsl:value-of select="@xml:lang" />
                             </xsl:attribute>
                             <xsl:for-each select="./*">
-                                <jr:text id="one-section">
+                                <jr:text>
                                     <xsl:attribute name="id">
                                         <xsl:value-of select="local-name()" />
                                     </xsl:attribute>
                                     <jr:value><xsl:value-of select="label"/></jr:value>
                                 </jr:text>
                             </xsl:for-each>
+                            <xsl:for-each select=".//item">
+                                <jr:text>
+                                    <xsl:attribute name="id">
+                                        <xsl:value-of select="value" />
+                                    </xsl:attribute>
+                                    <jr:value><xsl:value-of select="label"/></jr:value>
+                                </jr:text>
+                            </xsl:for-each>
+                            
                         </jr:translation>
                     </xsl:for-each>
                 </jr:itext>
@@ -60,6 +69,9 @@
                 <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
                 <xsl:attribute name="nodeset"><xsl:value-of select="../@nodeset"/>/<xsl:value-of select="@nodeset"/></xsl:attribute>
                 <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
+                <xsl:if test="@type "><xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute></xsl:if>
+                <xsl:if test="@required "><xsl:attribute name="required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>
+                <xsl:if test="@relevant "><xsl:attribute name="relevant"><xsl:value-of select="@relevant"/></xsl:attribute></xsl:if>
             </xforms:bind>
         </xsl:for-each>    
         
@@ -69,21 +81,46 @@
 
         <xhtml:body>
         
-        <xsl:apply-templates select=".//xhtml:td"/>
+        <xsl:apply-templates select=".//xhtml:td/*"/>
 
         </xhtml:body>
     </xsl:template>
     
     <xsl:template match="xhtml:td">
-        <xsl:for-each select="xforms:input">
-            <xforms:input>
-                <xsl:attribute name="bind"><xsl:value-of select="@bind" /></xsl:attribute>
-                <xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute>            
-                <xforms:label>
-                    <xsl:variable name="resourceReference" select="substring-before(substring-after(xforms:label/@ref, '/'), '/')"/>
-                    <xsl:attribute name="ref">jr:itext('<xsl:value-of select="$resourceReference"/>')</xsl:attribute>            
-                </xforms:label>
-            </xforms:input>
-        </xsl:for-each>
+        <xsl:apply-templates select="./*" />
     </xsl:template>
+    
+    <xsl:template match="xforms:input">
+        <xforms:input>
+            <xsl:attribute name="bind"><xsl:value-of select="@bind" /></xsl:attribute>
+            <xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute>            
+            <xforms:label>
+                <xsl:variable name="resourceReference" select="substring-before(substring-after(xforms:label/@ref, '/'), '/')"/>
+                <xsl:attribute name="ref">jr:itext('<xsl:value-of select="$resourceReference"/>')</xsl:attribute>            
+            </xforms:label>
+        </xforms:input>
+    </xsl:template>
+    
+    <xsl:template match="xforms:select1">
+        <xforms:select1>
+            <xsl:attribute name="bind"><xsl:value-of select="@bind" /></xsl:attribute>
+            <xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute>            
+                       
+            <xforms:label>
+                <xsl:variable name="resourceReference" select="substring-before(substring-after(xforms:label/@ref, '/'), '/')"/>
+                <xsl:attribute name="ref">jr:itext('<xsl:value-of select="$resourceReference"/>')</xsl:attribute>            
+            </xforms:label>
+            <xsl:variable name="itemsetReference" select="substring-before(substring-after(xforms:itemset/@nodeset, '/'), '/')"/>
+            <foo><xsl:value-of select="$itemsetReference"/></foo>
+            <xsl:for-each select="/xhtml:html/xhtml:head/xforms:model/xforms:instance[@id='fr-form-resources']//*[local-name() = $itemsetReference]/item">
+                <item>
+                    <xsl:attribute name="id"><xsl:value-of select="./value"/></xsl:attribute>        
+                    <xforms:label><xsl:attribute name="ref">jr:itext('<xsl:value-of select="./value"/>')</xsl:attribute></xforms:label>
+                    <xforms:value><xsl:value-of select="./value"/></xforms:value>
+                </item>
+            </xsl:for-each>
+        </xforms:select1>
+
+    </xsl:template>
+    
 </xsl:stylesheet>
