@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.gatherdata.forms.core.model.FormTemplate;
+import org.gatherdata.forms.core.model.FormTemplateStyle;
 import org.gatherdata.forms.core.spi.FormTemplateDao;
 
 /**
@@ -49,6 +50,17 @@ public final class FormTemplateDaoPojo
     public FormTemplate save(FormTemplate entity) {
         uidToFormTemplateMap.put(entity.getUid(), entity);
         return entity;
+    }
+
+    public Iterable<? extends FormTemplate> getAllStyledAs(FormTemplateStyle style) {
+        List<FormTemplate> allStyledTemplates = new ArrayList<FormTemplate>();
+        
+        for (FormTemplate possibleTemplate : getAll()) {
+            if (possibleTemplate.getFormStyle().equals(style.toString())) {
+                allStyledTemplates.add(possibleTemplate);
+            }
+        }
+        return allStyledTemplates;
     }
     
 }

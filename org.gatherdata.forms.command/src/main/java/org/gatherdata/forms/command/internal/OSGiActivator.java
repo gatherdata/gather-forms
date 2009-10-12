@@ -1,16 +1,18 @@
-package org.gatherdata.forms.core.osgi;
+package org.gatherdata.forms.command.internal;
 
-import static com.google.inject.Guice.createInjector;
-import static org.ops4j.peaberry.Peaberry.osgiModule;
+import java.util.Dictionary;
+import java.util.Properties;
+import java.util.logging.Logger;
 
+import org.apache.felix.shell.Command;
 import org.ops4j.peaberry.Export;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-
-import org.gatherdata.forms.core.spi.FormCatalogService;
-import org.gatherdata.forms.core.spi.FormTemplateDao;
+import static org.ops4j.peaberry.Peaberry.osgiModule;
+import static com.google.inject.Guice.createInjector;
 
 import com.google.inject.Inject;
+
 
 /**
  * Extension of the default OSGi bundle activator
@@ -18,20 +20,18 @@ import com.google.inject.Inject;
 public final class OSGiActivator
     implements BundleActivator
 {
-	
-	@Inject
-	FormTemplateDao dao;
-	
-	@Inject
-	Export<FormCatalogService> service;
-	
+    private static final Logger log = Logger.getLogger(OSGiActivator.class.getName());
+    
+    @Inject
+    Export<Command> archiveCommand;
+    
     /**
      * Called whenever the OSGi framework starts our bundle
      */
     public void start( BundleContext bc )
         throws Exception
     {
-		createInjector(osgiModule(bc), new GuiceBindingModule()).injectMembers(this);
+        createInjector(osgiModule(bc), new GuiceBindingModule()).injectMembers(this);
     }
 
     /**

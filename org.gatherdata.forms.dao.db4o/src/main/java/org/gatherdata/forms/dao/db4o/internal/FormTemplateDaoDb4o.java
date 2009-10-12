@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.gatherdata.forms.core.model.FormTemplate;
+import org.gatherdata.forms.core.model.FormTemplateStyle;
 import org.gatherdata.forms.core.spi.FormTemplateDao;
 import org.gatherdata.forms.dao.db4o.model.FormTemplateDb4o;
 
@@ -60,6 +61,17 @@ public final class FormTemplateDaoDb4o
         }
         
         return foundEntity;
+    }
+
+    public Iterable<? extends FormTemplate> getAllStyledAs(FormTemplateStyle style) {
+        final String requestedStyle = style.toString();
+        ObjectSet<FormTemplateDb4o> result = db4o.query(new Predicate<FormTemplateDb4o>() {
+            @Override
+            public boolean match(FormTemplateDb4o possibleMatch) {
+                return possibleMatch.getFormStyle().equals(requestedStyle);
+            }
+        });
+        return result;
     }
 
     public Iterable<? extends FormTemplate> getAll() {

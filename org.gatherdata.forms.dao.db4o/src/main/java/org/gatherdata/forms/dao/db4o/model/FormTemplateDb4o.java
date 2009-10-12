@@ -63,5 +63,14 @@ public class FormTemplateDb4o extends DescribedEntityDb4o implements FormTemplat
         return this;
 	}
 
+    @Override
+    public String toString() {
+        return "FormTemplate [uid=" + getUid() + ", dateCreated=" + getDateCreated()
+                + ", dateModified=" + getDateModified() 
+                + ", formType=" + formType+ ", formStyle=" + formStyle 
+                + "]";
+    }
+
+	
 	
 }

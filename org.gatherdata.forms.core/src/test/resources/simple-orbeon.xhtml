@@ -1,0 +1,107 @@
+<xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml"
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:saxon="http://saxon.sf.net/"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:xxi="http://orbeon.org/oxf/xml/xinclude"
+            xmlns:sql="http://orbeon.org/oxf/xml/sql"
+            xmlns:xxforms="http://orbeon.org/oxf/xml/xforms"
+            xmlns:exforms="http://www.exforms.org/exf/1-0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:fr="http://orbeon.org/oxf/xml/form-runner"
+            xmlns:ev="http://www.w3.org/2001/xml-events"
+            xmlns:xforms="http://www.w3.org/2002/xforms">
+    <xhtml:head>
+        <xhtml:title>Simple Form</xhtml:title>
+        <xforms:model id="fr-form-model">
+
+            
+            <xforms:instance id="fr-form-instance">
+                <form>
+                    <one-section>
+                        <name/>
+                    </one-section>
+                </form>
+            </xforms:instance>
+
+            
+            <xforms:bind id="fr-form-binds" nodeset="instance('fr-form-instance')">
+                <xforms:bind id="one-section-bind" nodeset="one-section" name="one-section">
+                    <xforms:bind id="name-bind" nodeset="name" name="name"/>
+                </xforms:bind>
+            </xforms:bind>
+
+            
+            <xforms:instance id="fr-form-metadata" xxforms:readonly="true">
+                <metadata>
+                    <application-name>gather</application-name>
+                    <form-name>simple</form-name>
+                    <title xml:lang="en">Simple Form</title>
+                    <description xml:lang="en">a single question form</description>
+                    <author/>
+                    <logo mediatype="" filename="" size=""/>
+                </metadata>
+            </xforms:instance>
+
+            
+            <xforms:instance id="fr-form-attachments">
+                <attachments>
+                    <css mediatype="text/css" filename="" size=""/>
+                    <pdf mediatype="application/pdf" filename="" size=""/>
+                </attachments>
+            </xforms:instance>
+
+            
+            <xforms:instance id="fr-form-resources" xxforms:readonly="true">
+                <resources>
+                    <resource xml:lang="en">
+                        <one-section>
+                            <label>One Question</label>
+                            <help/>
+                        </one-section>
+                        <name>
+                            <label>What is your name?</label>
+                            <hint/>
+                            <help/>
+                            <alert/>
+                        </name>
+                    </resource>
+                </resources>
+            </xforms:instance>
+
+            
+            <xforms:instance id="fr-service-request-instance" xxforms:exclude-result-prefixes="#all">
+                <request/>
+            </xforms:instance>
+
+            <xforms:instance id="fr-service-response-instance" xxforms:exclude-result-prefixes="#all">
+                <response/>
+            </xforms:instance>
+
+        </xforms:model>
+    </xhtml:head>
+    <xhtml:body>
+        <fr:view>
+            <xforms:label ref="instance('fr-form-metadata')/title"/>
+            <fr:body>
+                <fr:section id="one-section-section" bind="one-section-bind">
+                    <xforms:label ref="$form-resources/one-section/label"/>
+                    <xforms:help ref="$form-resources/one-section/help"/>
+                    <fr:grid columns="2">
+                        <xhtml:tr>
+                            <xhtml:td>
+                                <xforms:input bind="name-bind" id="name-control">
+                                    <xforms:label ref="$form-resources/name/label"/>
+                                    <xforms:hint ref="$form-resources/name/hint"/>
+                                    <xforms:help ref="$form-resources/name/help"/>
+                                    <xforms:alert ref="$fr-resources/detail/labels/alert"/>
+                                </xforms:input>
+                            </xhtml:td>
+                            <xhtml:td/>
+                        </xhtml:tr>
+                    </fr:grid>
+                </fr:section>
+            </fr:body>
+        </fr:view>
+    </xhtml:body>
+</xhtml:html>

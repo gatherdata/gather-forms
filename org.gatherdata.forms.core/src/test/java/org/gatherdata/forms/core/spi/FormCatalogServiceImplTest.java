@@ -1,4 +1,4 @@
-package org.gatherdata.forms.transform.xhtml.internal;
+package org.gatherdata.forms.core.spi;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,22 +30,14 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.text.IsEqualIgnoringWhiteSpace.equalToIgnoringWhiteSpace;
 
-public class XslTransformerTest {
+public class FormCatalogServiceImplTest {
 
-    @Test
-    public void shouldTransformBirds() throws IOException, TransformerException {
-        String actualResult = transform("birds.xml", "birds.xsl");
-        String expectedResult = readResource("birds-out.xml");
-
-        assertThat(actualResult, notNullValue());
-        assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));
-    }
     
     @Test
     public void shouldTransformSimpleOrbeonFormToRosa() throws IOException, TransformerException {
         String actualResult = transform("simple-orbeon.xhtml", "orb2rosa.xsl");
         String expectedResult = readResource("simple-rosa.xhtml");
-        writeTextFile(actualResult, "simple-result.xhtml");
+        //writeTextFile(actualResult, "simple-result.xhtml");
 
         assertThat(actualResult, notNullValue());
         assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));
@@ -55,7 +47,7 @@ public class XslTransformerTest {
     public void shouldTransformFluSurveyToRosa() throws IOException, TransformerException {
         String actualResult = transform("flu-orbeon.xhtml", "orb2rosa.xsl");
         String expectedResult = readResource("flu-rosa.xhtml");
-        writeTextFile(actualResult, "flu-result.xhtml");
+        //writeTextFile(actualResult, "flu-result.xhtml");
 
         assertThat(actualResult, notNullValue());
         assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));

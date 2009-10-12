@@ -5,8 +5,8 @@ import static org.ops4j.peaberry.Peaberry.service;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 
-import org.gatherdata.forms.core.internal.FormServiceImpl;
-import org.gatherdata.forms.core.spi.FormService;
+import org.gatherdata.forms.core.internal.FormCatalogServiceImpl;
+import org.gatherdata.forms.core.spi.FormCatalogService;
 import org.gatherdata.forms.core.spi.FormTemplateDao;
 import org.ops4j.peaberry.Export;
 
@@ -28,7 +28,7 @@ public class GuiceBindingModule extends AbstractModule {
 		bind(FormTemplateDao.class).toProvider(service(FormTemplateDao.class).single());
 		
 		// exports
-		bind(export(FormService.class)).toProvider(service(FormServiceImpl.class).export());
+		bind(export(FormCatalogService.class)).toProvider(service(FormCatalogServiceImpl.class).export());
 		
 	}
 }
