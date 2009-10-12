@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features>     
+    <feature name="gather-forms.core" version="${gather-forms.version}">
+        <bundle>mvn:org.gatherdata.gather-forms/org.gatherdata.forms.core/${gather-forms.version}</bundle>
+    </feature>
+
+    <feature name="gather-forms.felix" version="${gather-forms.version}">
+        <bundle>mvn:org.gatherdata.gather-forms/org.gatherdata.forms.command/${gather-forms.version}</bundle>
+    </feature>
+
+    <feature name="gather-forms.db4o" version="${gather-forms.version}">
+        <feature>gather-forms.core</feature>
+        <bundle>mvn:org.gatherdata.gather-forms/org.gatherdata.forms.dao.db4o/${gather-forms.version}</bundle>
+    </feature>
+</features>

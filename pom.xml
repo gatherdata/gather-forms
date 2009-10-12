@@ -64,6 +64,7 @@
   <modules>
     <module>poms</module>
     <module>org.gatherdata.forms.core</module>
+    <module>org.gatherdata.forms.features</module>
     <module>org.gatherdata.forms.command</module>
     <module>org.gatherdata.forms.dao.pojo</module>
     <module>org.gatherdata.forms.dao.db4o</module>
