@@ -20,6 +20,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.gatherdata.forms.core.internal.FormCatalogServiceImpl;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -32,10 +34,19 @@ import static org.hamcrest.text.IsEqualIgnoringWhiteSpace.equalToIgnoringWhiteSp
 
 public class FormCatalogServiceImplTest {
 
+    FormCatalogService formCatalogService;
+    
+    @Before
+    public void setUpService() {
+        URL orb2RosaUrl = getResource("orb2rosa.xsl");
+        formCatalogService = new FormCatalogServiceImpl();
+        formCatalogService.setOrbeonToRosaXml(orb2RosaUrl);
+    }
     
     @Test
     public void shouldTransformSimpleOrbeonFormToRosa() throws IOException, TransformerException {
-        String actualResult = transform("simple-orbeon.xhtml", "orb2rosa.xsl");
+        String originalXml = readResource("simple-orbeon.xhtml");
+        String actualResult = formCatalogService.orbeonToRosa(originalXml);
         String expectedResult = readResource("simple-rosa.xhtml");
         //writeTextFile(actualResult, "simple-result.xhtml");
 
@@ -45,7 +56,9 @@ public class FormCatalogServiceImplTest {
 
     @Test
     public void shouldTransformFluSurveyToRosa() throws IOException, TransformerException {
-        String actualResult = transform("flu-orbeon.xhtml", "orb2rosa.xsl");
+        //String actualResult = transform("flu-orbeon.xhtml", "orb2rosa.xsl");
+        String actualResult = formCatalogService.orbeonToRosa(readResource("flu-orbeon.xhtml"));
+
         String expectedResult = readResource("flu-rosa.xhtml");
         //writeTextFile(actualResult, "flu-result.xhtml");
 

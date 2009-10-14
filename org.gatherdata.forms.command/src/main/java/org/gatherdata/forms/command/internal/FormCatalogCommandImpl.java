@@ -43,8 +43,8 @@ public class FormCatalogCommandImpl implements Command {
 
             if ("help".equals(subCommand)) {
                 out.println("subcommands: list, show, mock");
-                out.println("\tlist - show saved archives");
-                out.println("\tshow <uid> - show the form template <uid>");
+                out.println("\tlist - show available form templates");
+                out.println("\tshow <uid> - show the form template");
                 out.println("\tmock - generate and save a form template");
             } else if ("mock".equals(subCommand)) {
                 FormTemplate mockEntity = createMockEntity();

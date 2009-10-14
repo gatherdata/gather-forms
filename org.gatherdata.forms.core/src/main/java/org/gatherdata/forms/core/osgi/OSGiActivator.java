@@ -3,6 +3,8 @@ package org.gatherdata.forms.core.osgi;
 import static com.google.inject.Guice.createInjector;
 import static org.ops4j.peaberry.Peaberry.osgiModule;
 
+import java.net.URL;
+
 import org.ops4j.peaberry.Export;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -32,6 +34,10 @@ public final class OSGiActivator
         throws Exception
     {
 		createInjector(osgiModule(bc), new GuiceBindingModule()).injectMembers(this);
+
+        URL orb2RosaUrl = bc.getBundle().getResource("orb2rosa.xsl");
+        
+		service.get().setOrbeonToRosaXml(orb2RosaUrl);
     }
 
     /**

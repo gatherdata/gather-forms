@@ -36,6 +36,8 @@ public final class FormCatalogServiceImpl implements FormCatalogService {
     
     @Inject
     BundleContext bc;
+
+    private URL orb2RosaUrl;
     
     public boolean exists(URI uid) {
         return dao.exists(uid);
@@ -78,10 +80,10 @@ public final class FormCatalogServiceImpl implements FormCatalogService {
             save(updatedEntity);
         }
     }
-    public String orbeonToRosa(String xhtml) {
+    public String orbeonToRosa(String orbeonXhtml) {
         String rosaXhtml = null;
         try {
-            rosaXhtml = transform("simple-orbeon.xhtml", "orb2rosa.xsl");
+            rosaXhtml = transform(orbeonXhtml, orb2RosaUrl);
         } catch (TransformerException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -90,10 +92,9 @@ public final class FormCatalogServiceImpl implements FormCatalogService {
         return rosaXhtml;
     }
 
-    public String transform(String xhtml, String xslResourceName) throws TransformerException, IOException {
+    public String transform(String xhtml, URL xslUrl) throws TransformerException, IOException {
         Reader originalInput = new StringReader(xhtml);
 
-        URL xslUrl = bc.getBundle().getResource(xslResourceName);
         Reader xsl = new InputStreamReader(xslUrl.openStream());
         
         StringWriter transformedString = new StringWriter();
@@ -109,6 +110,10 @@ public final class FormCatalogServiceImpl implements FormCatalogService {
 
     public URL getResource(String resourceName) {
         return this.getClass().getClassLoader().getResource(resourceName);
+    }
+
+    public void setOrbeonToRosaXml(URL orb2RosaUrl) {
+        this.orb2RosaUrl = orb2RosaUrl;
     }
 
 
