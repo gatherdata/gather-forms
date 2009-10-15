@@ -102,6 +102,7 @@ public class FormCatalogCommandImpl implements Command {
         formTemplate.append("<xhtml:title>Simple Form</xhtml:title>\n");
         formTemplate.append("<xforms:model>\n");
         formTemplate.append("<xforms:instance>\n");
+        formTemplate.append("<form>\n");
         formTemplate.append("<one-section>\n");
         formTemplate.append("<name/>\n");
         formTemplate.append("</one-section>\n");
