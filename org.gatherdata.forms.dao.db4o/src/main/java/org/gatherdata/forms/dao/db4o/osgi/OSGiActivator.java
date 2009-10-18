@@ -11,6 +11,7 @@ import org.ops4j.peaberry.Export;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+import com.db4o.ObjectContainer;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
@@ -23,6 +24,9 @@ public final class OSGiActivator
 	@Inject
 	Export<FormTemplateDao> dao;
 	
+    @Inject
+    ObjectContainer db4o;
+
     /**
      * Called whenever the OSGi framework starts our bundle
      */
@@ -41,7 +45,7 @@ public final class OSGiActivator
     public void stop( BundleContext bc )
         throws Exception
     {
-        
+        db4o.close();
     }
 }
 
