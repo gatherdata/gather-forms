@@ -88,25 +88,53 @@
   </profiles>
 
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.ops4j</groupId>
-        <artifactId>maven-pax-plugin</artifactId>
-        <version>1.4</version>
-        <configuration>
-          <framework>felix</framework>
-          <profiles>log</profiles>
-          <!-- noDependencies=true to force all deployabled bundles to be part of a feature -->
-          <noDependencies>true</noDependencies>
-          <provision>
-            <param>mvn:org.apache.felix/org.apache.felix.configadmin/1.0.10@1</param>
-            <param>mvn:org.ops4j.pax.confman/pax-confman-propsloader/0.2.2@2</param>
-            <param>scan-features:mvn:org.gatherdata.gather-commons/org.gatherdata.commons.features/${gather-commons.version}/xml/features!/gather-core,${dao.gather-dependencies}</param>
-            <param>${dao.provision}</param>
-          </provision>
-        </configuration>
-      </plugin>
-    </plugins>
+      <plugins>
+          <plugin>
+              <groupId>org.ops4j</groupId>
+              <artifactId>maven-pax-plugin</artifactId>
+              <version>1.4</version>
+              <configuration>
+                  <framework>felix</framework>
+                  <profiles>log</profiles>
+                  <!-- noDependencies=true to force all deployabled bundles to be part of a feature -->
+                  <noDependencies>true</noDependencies>
+                  <provision>
+                      <param>mvn:org.apache.felix/org.apache.felix.configadmin/1.0.10@1</param>
+                      <param>mvn:org.ops4j.pax.confman/pax-confman-propsloader/0.2.2@2</param>
+                      <param>scan-features:mvn:org.gatherdata.gather-commons/org.gatherdata.commons.features/${gather-commons.version}/xml/features!/gather-core,${dao.gather-dependencies}</param>
+                      <param>${dao.provision}</param>
+                  </provision>
+              </configuration>
+          </plugin>
+          <plugin>
+              <inherited>false</inherited>
+              <groupId>com.google.code.maven-license-plugin</groupId>
+              <artifactId>maven-license-plugin</artifactId>
+              <version>1.4.0</version>
+              <configuration>
+                  <header>${basedir}/etc/header.txt</header>
+                  <failIfMissing>true</failIfMissing>
+                  <aggregate>true</aggregate>
+                  <properties>
+                      <owner>AED</owner>
+                      <year>2009</year>
+                      <email>info@gatherdata.org</email>
+                  </properties>
+                  <includes>
+                      <include>**/src/**/*.java</include>
+                  </includes>
+              </configuration>
+              <executions>
+                  <execution>
+                      <id>check-headers</id>
+                      <phase>verify</phase>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
   </build>
 
 </project>
