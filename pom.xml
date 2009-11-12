@@ -67,7 +67,6 @@
     <module>org.gatherdata.forms.features</module>
     <module>org.gatherdata.forms.command</module>
     <module>org.gatherdata.forms.dao.pojo</module>
-    <module>org.gatherdata.forms.dao.db4o</module>
     <module>org.gatherdata.forms.transform.xhtml</module>
   </modules>
 
@@ -136,5 +135,18 @@
           </plugin>
       </plugins>
   </build>
+
+  <distributionManagement>
+      <repository>
+          <id>gather.releases</id>
+          <name>GATHERdata Releases</name>
+          <url>http://repository.gatherdata.org/content/repositories/releases</url>
+      </repository>
+      <snapshotRepository>
+          <id>gather.snapshots</id>
+          <name>GATHERdata Snapshots</name>
+          <url>http://repository.gatherdata.org/content/repositories/snapshots</url>
+      </snapshotRepository>
+  </distributionManagement>
 
 </project>
