@@ -6,15 +6,29 @@
 
     <xsl:output method="xml" indent="yes" />
 
+
+    <xsl:key name="kItem" match="item" use="value"/>
+    
     <xsl:template match="xhtml:html">
         <xhtml:html>
-            
+
             <xsl:apply-templates select="xhtml:head"/>
             <xsl:apply-templates select="xhtml:body"/>
 
         </xhtml:html>
     </xsl:template>
 
+    <xsl:template match="item">
+        <!-- count(. | key('kItem', REL_ID)[1]) = 1 -->
+        <!-- generate-id() = generate-id(key('kItem', REL-id)[1]) -->
+        <xsl:if test="count(. | key('kItem', value)[1]) = 1">
+            <jr:text>
+                <xsl:attribute name="id"><xsl:value-of select="value" /></xsl:attribute>
+                <jr:value><xsl:value-of select="label"/></jr:value>
+            </jr:text>
+    	</xsl:if>
+    </xsl:template>
+	
     <xsl:template match="xhtml:head">
         <xhtml:head>
             <xhtml:title>
@@ -38,20 +52,12 @@
                             </xsl:attribute>
                             <xsl:for-each select="./*">
                                 <jr:text>
-                                    <xsl:attribute name="id">
-                                        <xsl:value-of select="local-name()" />
-                                    </xsl:attribute>
+                                    <xsl:attribute name="id"><xsl:value-of select="local-name()" /></xsl:attribute>
                                     <jr:value><xsl:value-of select="label"/></jr:value>
                                 </jr:text>
                             </xsl:for-each>
-                            <xsl:for-each select=".//item">
-                                <jr:text>
-                                    <xsl:attribute name="id">
-                                        <xsl:value-of select="value" />
-                                    </xsl:attribute>
-                                    <jr:value><xsl:value-of select="label"/></jr:value>
-                                </jr:text>
-                            </xsl:for-each>
+                            
+                            <xsl:apply-templates select=".//item"/>
                             
                         </jr:translation>
                     </xsl:for-each>
@@ -111,7 +117,6 @@
                 <xsl:attribute name="ref">jr:itext('<xsl:value-of select="$resourceReference"/>')</xsl:attribute>            
             </xforms:label>
             <xsl:variable name="itemsetReference" select="substring-before(substring-after(xforms:itemset/@nodeset, '/'), '/')"/>
-            <foo><xsl:value-of select="$itemsetReference"/></foo>
             <xsl:for-each select="/xhtml:html/xhtml:head/xforms:model/xforms:instance[@id='fr-form-resources']//*[local-name() = $itemsetReference]/item">
                 <item>
                     <xsl:attribute name="id"><xsl:value-of select="./value"/></xsl:attribute>        
