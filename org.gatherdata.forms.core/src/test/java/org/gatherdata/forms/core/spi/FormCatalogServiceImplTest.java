@@ -55,7 +55,7 @@ public class FormCatalogServiceImplTest {
         String originalXml = readResource("simple-orbeon.xhtml");
         String actualResult = formCatalogService.orbeonToRosa(originalXml);
         String expectedResult = readResource("simple-rosa.xhtml");
-        //writeTextFile(actualResult, "simple-result.xhtml");
+        writeTextFile(actualResult, "simple-result.xhtml");
 
         assertThat(actualResult, notNullValue());
         assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));
@@ -67,7 +67,7 @@ public class FormCatalogServiceImplTest {
         String actualResult = formCatalogService.orbeonToRosa(readResource("flu-orbeon.xhtml"));
 
         String expectedResult = readResource("flu-rosa.xhtml");
-        //writeTextFile(actualResult, "flu-result.xhtml");
+        writeTextFile(actualResult, "flu-result.xhtml");
 
         assertThat(actualResult, notNullValue());
         assertThat(actualResult, is(equalToIgnoringWhiteSpace(expectedResult)));

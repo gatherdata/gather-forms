@@ -14,11 +14,11 @@
     <org.osgi.service.http.port>8080</org.osgi.service.http.port>
     <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
     <!-- gather versions -->
-    <gather-commons.version>1.0-SNAPSHOT</gather-commons.version>
+    <gather-commons.version>1.0.0</gather-commons.version>
     <gather-forms.version>1.0-SNAPSHOT</gather-forms.version>
     <!-- 3rd party versions -->
     <peaberry.version>1.1.1</peaberry.version>
-    <guice.version>2.0-SNAPSHOT</guice.version>
+    <guice.version>2.0</guice.version>
     <aopalliance.version>1.0_1</aopalliance.version>
     <geronimo.jta.version>1.1.1</geronimo.jta.version>
     <eclipselink.version>2.0.0-M11</eclipselink.version>
@@ -37,6 +37,18 @@
   <packaging>pom</packaging>
 
   <repositories>
+    <repository>
+      <id>gather.releases</id>
+      <name>Gather Bundle Releases</name>
+      <url>http://repository.gatherdata.org/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+        <checksumPolicy>ignore</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
     <repository>
       <id>com.springsource.repository.bundles.release</id>
       <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
@@ -67,7 +79,6 @@
     <module>org.gatherdata.forms.features</module>
     <module>org.gatherdata.forms.command</module>
     <module>org.gatherdata.forms.dao.pojo</module>
-    <module>org.gatherdata.forms.transform.xhtml</module>
   </modules>
 
   <profiles>
