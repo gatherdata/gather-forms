@@ -45,4 +45,10 @@ public class FormTemplateDaoPojoTest extends BaseFormTemplateDaoTest {
         assertTrue(true);
     }
 
+	@Override
+	protected void rollbackTransaction() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

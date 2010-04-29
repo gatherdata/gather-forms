@@ -48,4 +48,10 @@ public class FormTemplateDaoDb4oTest extends BaseFormTemplateDaoTest {
     protected void endTransaction() {
         ;
     }
+
+	@Override
+	protected void rollbackTransaction() {
+		// TODO Auto-generated method stub
+		
+	}
 }

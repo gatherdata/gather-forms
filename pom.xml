@@ -11,17 +11,23 @@
   <description>Form storage, integration and transofmration.</description>
 
   <properties>
+    <!-- runtime properties -->
     <org.osgi.service.http.port>8080</org.osgi.service.http.port>
     <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
+    <karaf.version>1.2.0</karaf.version>
+    <karaf.startRemoteShell>false</karaf.startRemoteShell> 
+    <karaf.startLocalConsole>true</karaf.startLocalConsole>
+    <karaf.systemBundlesStartLevel>0</karaf.systemBundlesStartLevel>
+ 
     <!-- gather versions -->
-    <gather-commons.version>1.0.0</gather-commons.version>
+    <gather-commons.version>1.0.1-SNAPSHOT</gather-commons.version>
     <gather-forms.version>1.0-SNAPSHOT</gather-forms.version>
     <!-- 3rd party versions -->
     <peaberry.version>1.1.1</peaberry.version>
     <guice.version>2.0</guice.version>
     <aopalliance.version>1.0_1</aopalliance.version>
     <geronimo.jta.version>1.1.1</geronimo.jta.version>
-    <eclipselink.version>2.0.0-M11</eclipselink.version>
+    <eclipselink.version>2.0.2</eclipselink.version>
     <joda-time.version>1.5.2_1</joda-time.version>
     <junit.version>4.5</junit.version>
     <hamcrest.version>1.1</hamcrest.version>
@@ -105,14 +111,14 @@
               <version>1.4</version>
               <configuration>
                   <framework>felix</framework>
-                  <profiles>log</profiles>
+                  <args>etc/runner.args</args>
                   <!-- noDependencies=true to force all deployabled bundles to be part of a feature -->
                   <noDependencies>true</noDependencies>
                   <provision>
-                      <param>mvn:org.apache.felix/org.apache.felix.configadmin/1.0.10@1</param>
-                      <param>mvn:org.ops4j.pax.confman/pax-confman-propsloader/0.2.2@2</param>
-                      <param>scan-features:mvn:org.gatherdata.gather-commons/org.gatherdata.commons.features/${gather-commons.version}/xml/features!/gather-core,${dao.gather-dependencies}</param>
-                      <param>${dao.provision}</param>
+                    <param>scan-features:mvn:org.gatherdata.gather-commons/org.gatherdata.commons.features/1.0.1-SNAPSHOT/xml/features!/karaf-shell</param>
+
+                    <param>scan-features:mvn:org.gatherdata.gather-commons/org.gatherdata.commons.features/${gather-commons.version}/xml/features!/gather-core,${dao.gather-dependencies}</param>
+                    <param>${dao.provision}</param>
                   </provision>
               </configuration>
           </plugin>

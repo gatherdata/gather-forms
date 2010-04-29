@@ -100,7 +100,7 @@
 		<dependency>
 			<groupId>org.gatherdata.gather-commons</groupId>
 			<artifactId>org.gatherdata.commons.db.db4o</artifactId>
-			<version>${gather-commons.version}</version>
+			<version>1.0.0</version>
 		</dependency>
 
 	</dependencies>
