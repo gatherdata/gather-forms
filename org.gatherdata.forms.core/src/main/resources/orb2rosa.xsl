@@ -4,10 +4,13 @@
         xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
         xmlns:jr="http://openrosa.org/javarosa"
-        xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+        xmlns:xxforms="http://orbeon.org/oxf/xml/xforms"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:fr="http://orbeon.org/oxf/xml/form-runner"
+
+        >
 
     <xsl:output method="xml" indent="yes" />
-
 
     <xsl:key name="kItem" match="item" use="label"/>
     
@@ -96,14 +99,40 @@
         </xsl:for-each>    
         
     </xsl:template>
-    
+     
     <xsl:template match="xhtml:body">
 
         <xhtml:body>
         
-        <xsl:apply-templates select=".//xhtml:td/*"/>
+        <xsl:apply-templates select=".//fr:section"/>
 
         </xhtml:body>
+    </xsl:template>
+    
+    <xsl:template match="fr:section">
+
+      <xforms:group>
+
+        <xsl:variable name="sectionReference" select="substring-before(@bind, '-bind')"/>
+
+        <xforms:label>
+          <xsl:attribute name="ref">jr:itext('<xsl:value-of select="$sectionReference"/>')</xsl:attribute>            
+        </xforms:label>
+        
+        <xsl:choose>
+          <xsl:when test="boolean(@repeat)">
+            <xforms:repeat>
+            <xsl:attribute name="nodeset">/form/<xsl:value-of select="$sectionReference"/></xsl:attribute>
+            <xsl:apply-templates select=".//xhtml:td/*"/>
+            </xforms:repeat>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select=".//xhtml:td/*"/>
+          </xsl:otherwise>
+        </xsl:choose>
+        
+      </xforms:group>
+ 
     </xsl:template>
     
     <xsl:template match="xhtml:td">
@@ -132,11 +161,11 @@
             </xforms:label>
             <xsl:variable name="itemsetReference" select="substring-before(substring-after(xforms:itemset/@nodeset, '/'), '/')"/>
             <xsl:for-each select="/xhtml:html/xhtml:head/xforms:model/xforms:instance[@id='fr-form-resources']//*[local-name() = $itemsetReference]/item">
-                <item>
+                <xforms:item>
                     <xsl:attribute name="id"><xsl:value-of select="./value"/></xsl:attribute>        
                     <xforms:label><xsl:attribute name="ref">jr:itext('<xsl:value-of select="$resourceReference"/>_<xsl:value-of select="./value"/>')</xsl:attribute></xforms:label>
                     <xforms:value><xsl:value-of select="./value"/></xforms:value>
-                </item>
+                </xforms:item>
             </xsl:for-each>
         </xforms:select1>
 

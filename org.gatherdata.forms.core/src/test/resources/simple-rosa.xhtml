@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xhtml:html xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:jr="http://openrosa.org/javarosa" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<xhtml:html xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jr="http://openrosa.org/javarosa" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xhtml:head>
 <xhtml:title>Simple Form</xhtml:title>
 <xforms:model>
 <xforms:instance>
-<form xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:saxon="http://saxon.sf.net/" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:exforms="http://www.exforms.org/exf/1-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fr="http://orbeon.org/oxf/xml/form-runner">
+<form xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:saxon="http://saxon.sf.net/" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:exforms="http://www.exforms.org/exf/1-0">
                     <one-section>
                         <name/>
                     </one-section>
@@ -24,9 +24,12 @@
 </xforms:model>
 </xhtml:head>
 <xhtml:body>
+<xforms:group>
+<xforms:label ref="jr:itext('one-section')"/>
 <xforms:input bind="name-bind" id="name-control">
 <xforms:label ref="jr:itext('name')"/>
 </xforms:input>
+</xforms:group>
 </xhtml:body>
 </xhtml:html>
 
