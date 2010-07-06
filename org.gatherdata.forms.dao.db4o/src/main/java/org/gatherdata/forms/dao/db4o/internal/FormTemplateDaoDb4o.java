@@ -82,7 +82,13 @@ public final class FormTemplateDaoDb4o
     }
 
     public Iterable<? extends FormTemplate> getAll() {
-        return db4o.query(FormTemplateDb4o.class);
+        return db4o.query(new Predicate<FormTemplateDb4o>() {
+            @Override
+            public boolean match(FormTemplateDb4o possibleMatch) {
+                return (possibleMatch.getUid() != null);
+            }
+
+        });
     }
 
     public int getCount() {

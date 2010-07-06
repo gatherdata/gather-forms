@@ -74,6 +74,13 @@
     </xsl:template>
     
     <xsl:template match="xforms:bind">
+
+      <xforms:bind>
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+        <xsl:attribute name="nodeset"><xsl:value-of select="@nodeset"/></xsl:attribute>
+        <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
+        <xsl:if test="@relevant "><xsl:attribute name="relevant"><xsl:value-of select="@relevant"/></xsl:attribute></xsl:if>
+      </xforms:bind>
     
         <xsl:for-each select=".//xforms:bind">
             <xforms:bind>
@@ -97,7 +104,7 @@
                 </xsl:if>
             </xforms:bind>
         </xsl:for-each>    
-        
+
     </xsl:template>
      
     <xsl:template match="xhtml:body">
@@ -112,6 +119,8 @@
     <xsl:template match="fr:section">
 
       <xforms:group>
+        <!-- ABKDEBUG bind the group also? -->
+        <xsl:attribute name="bind"><xsl:value-of select="@bind" /></xsl:attribute>
 
         <xsl:variable name="sectionReference" select="substring-before(@bind, '-bind')"/>
 
