@@ -90,6 +90,7 @@
                 <xsl:if test="@type "><xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute></xsl:if>
                 <xsl:if test="@required "><xsl:attribute name="required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>
                 <xsl:if test="@relevant "><xsl:attribute name="relevant"><xsl:value-of select="@relevant"/></xsl:attribute></xsl:if>
+                <xsl:if test="@readonly "><xsl:attribute name="readonly"><xsl:value-of select="@readonly"/></xsl:attribute></xsl:if>
                 <xsl:if test="starts-with(@xxforms:default,'preload')">
                     <xsl:variable name="jrPreload" select="substring-after(@xxforms:default, '/')"/>
                     <xsl:variable name="preload" select="substring-before($jrPreload, '/')"/>
