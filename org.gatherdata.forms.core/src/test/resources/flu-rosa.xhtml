@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xhtml:html xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jr="http://openrosa.org/javarosa" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-<xhtml:head>
-<xhtml:title>Flu Survey</xhtml:title>
-<xforms:model>
-<xforms:instance>
-<form xmlns:saxon="http://saxon.sf.net/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:exforms="http://www.exforms.org/exf/1-0" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:sql="http://orbeon.org/oxf/xml/sql">
+<?xml version="1.0" encoding="UTF-8"?><xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms" xmlns:jr="http://openrosa.org/javarosa" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms">
+  <xhtml:head>
+    <xhtml:title>Flu Survey</xhtml:title>
+    <xforms:model>
+      <xforms:instance>
+        <form xmlns:saxon="http://saxon.sf.net/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:exforms="http://www.exforms.org/exf/1-0" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:sql="http://orbeon.org/oxf/xml/sql">
                     <questions>
                         <flu-type/>
                         <masks-noticed/>
@@ -14,195 +13,196 @@
                         <where-heard/>
                     </questions>
                 </form>
-</xforms:instance>
-<xforms:bind id="flu-type-bind" nodeset="questions/flu-type" name="flu-type" type="xs:string" required="true()"/>
-<xforms:bind id="masks-noticed-bind" nodeset="questions/masks-noticed" name="masks-noticed" type="xs:string" required="true()"/>
-<xforms:bind id="mask-reaction-bind" nodeset="questions/mask-reaction" name="mask-reaction" type="xs:string" required="true()"/>
-<xforms:bind id="where-heard-bind" nodeset="questions/where-heard" name="where-heard" type="xforms:string" relevant="../heard-messages= 'y'"/>
-<xforms:bind id="heard-messages-bind" nodeset="questions/heard-messages" name="heard-messages"/>
-<jr:itext>
-<jr:translation lang="en">
-<jr:text id="questions">
-<jr:value>Questions</jr:value>
-</jr:text>
-<jr:text id="flu-type">
-<jr:value>What type of Flu are people in your community most worried about?</jr:value>
-</jr:text>
-<jr:text id="masks-noticed">
-<jr:value>Are you noticing more people this week wearing face masks to protect themselves from Flu?</jr:value>
-</jr:text>
-<jr:text id="mask-reaction">
-<jr:value>When you see people wearing face masks, how does it make you feel?</jr:value>
-</jr:text>
-<jr:text id="heard-messages">
-<jr:value>Recently, have you seen any materials or activities or heard any messages about the flu?</jr:value>
-</jr:text>
-<jr:text id="where-heard">
-<jr:value>Where did you see or hear information about the flu?</jr:value>
-</jr:text>
-<jr:text id="flu-type_H5N1">
-<jr:value>H5N1</jr:value>
-</jr:text>
-<jr:text id="flu-type_H1N1">
-<jr:value>H1N1</jr:value>
-</jr:text>
-<jr:text id="flu-type_bird-flu">
-<jr:value>Bird Flu</jr:value>
-</jr:text>
-<jr:text id="flu-type_swine-flu">
-<jr:value>Swine Flu</jr:value>
-</jr:text>
-<jr:text id="masks-noticed_2">
-<jr:value>A lot more</jr:value>
-</jr:text>
-<jr:text id="masks-noticed_1">
-<jr:value>A few more</jr:value>
-</jr:text>
-<jr:text id="masks-noticed_0">
-<jr:value>About the same</jr:value>
-</jr:text>
-<jr:text id="masks-noticed_-1">
-<jr:value>A little less</jr:value>
-</jr:text>
-<jr:text id="masks-noticed_-2">
-<jr:value>A lot less</jr:value>
-</jr:text>
-<jr:text id="mask-reaction_protected">
-<jr:value>They are sick and protecting me</jr:value>
-</jr:text>
-<jr:text id="mask-reaction_at-risk">
-<jr:value>They are sick and putting me a risk </jr:value>
-</jr:text>
-<jr:text id="mask-reaction_optimistic">
-<jr:value>They are not sick but trying to prevent infection</jr:value>
-</jr:text>
-<jr:text id="heard-messages_y">
-<jr:value>Yes</jr:value>
-</jr:text>
-<jr:text id="heard-messages_n">
-<jr:value>No</jr:value>
-</jr:text>
-<jr:text id="where-heard_radio">
-<jr:value>Radio</jr:value>
-</jr:text>
-<jr:text id="where-heard_tv">
-<jr:value>TV</jr:value>
-</jr:text>
-<jr:text id="where-heard_friends-family">
-<jr:value>Friends/Family</jr:value>
-</jr:text>
-<jr:text id="where-heard_newspaper">
-<jr:value>Newspaper</jr:value>
-</jr:text>
-<jr:text id="where-heard_street-drama-theater">
-<jr:value>Street drama/theater</jr:value>
-</jr:text>
-<jr:text id="where-heard_other">
-<jr:value>Other</jr:value>
-</jr:text>
-</jr:translation>
-</jr:itext>
-</xforms:model>
-</xhtml:head>
-<xhtml:body>
-<xforms:group>
-<xforms:label ref="jr:itext('questions')"/>
-<xforms:select1 bind="flu-type-bind" id="flu-type-control">
-<xforms:label ref="jr:itext('flu-type')"/>
-<xforms:item id="H5N1">
-<xforms:label ref="jr:itext('flu-type_H5N1')"/>
-<xforms:value>H5N1</xforms:value>
-</xforms:item>
-<xforms:item id="H1N1">
-<xforms:label ref="jr:itext('flu-type_H1N1')"/>
-<xforms:value>H1N1</xforms:value>
-</xforms:item>
-<xforms:item id="bird-flu">
-<xforms:label ref="jr:itext('flu-type_bird-flu')"/>
-<xforms:value>bird-flu</xforms:value>
-</xforms:item>
-<xforms:item id="swine-flu">
-<xforms:label ref="jr:itext('flu-type_swine-flu')"/>
-<xforms:value>swine-flu</xforms:value>
-</xforms:item>
-</xforms:select1>
-<xforms:select1 bind="masks-noticed-bind" id="masks-noticed-control">
-<xforms:label ref="jr:itext('masks-noticed')"/>
-<xforms:item id="2">
-<xforms:label ref="jr:itext('masks-noticed_2')"/>
-<xforms:value>2</xforms:value>
-</xforms:item>
-<xforms:item id="1">
-<xforms:label ref="jr:itext('masks-noticed_1')"/>
-<xforms:value>1</xforms:value>
-</xforms:item>
-<xforms:item id="0">
-<xforms:label ref="jr:itext('masks-noticed_0')"/>
-<xforms:value>0</xforms:value>
-</xforms:item>
-<xforms:item id="-1">
-<xforms:label ref="jr:itext('masks-noticed_-1')"/>
-<xforms:value>-1</xforms:value>
-</xforms:item>
-<xforms:item id="-2">
-<xforms:label ref="jr:itext('masks-noticed_-2')"/>
-<xforms:value>-2</xforms:value>
-</xforms:item>
-</xforms:select1>
-<xforms:select1 bind="mask-reaction-bind" id="mask-reaction-control">
-<xforms:label ref="jr:itext('mask-reaction')"/>
-<xforms:item id="protected">
-<xforms:label ref="jr:itext('mask-reaction_protected')"/>
-<xforms:value>protected</xforms:value>
-</xforms:item>
-<xforms:item id="at-risk">
-<xforms:label ref="jr:itext('mask-reaction_at-risk')"/>
-<xforms:value>at-risk</xforms:value>
-</xforms:item>
-<xforms:item id="optimistic">
-<xforms:label ref="jr:itext('mask-reaction_optimistic')"/>
-<xforms:value>optimistic</xforms:value>
-</xforms:item>
-</xforms:select1>
-<xforms:select1 bind="heard-messages-bind" id="heard-messages-control">
-<xforms:label ref="jr:itext('heard-messages')"/>
-<xforms:item id="y">
-<xforms:label ref="jr:itext('heard-messages_y')"/>
-<xforms:value>y</xforms:value>
-</xforms:item>
-<xforms:item id="n">
-<xforms:label ref="jr:itext('heard-messages_n')"/>
-<xforms:value>n</xforms:value>
-</xforms:item>
-</xforms:select1>
-<xforms:select1 bind="where-heard-bind" id="where-heard-control">
-<xforms:label ref="jr:itext('where-heard')"/>
-<xforms:item id="radio">
-<xforms:label ref="jr:itext('where-heard_radio')"/>
-<xforms:value>radio</xforms:value>
-</xforms:item>
-<xforms:item id="tv">
-<xforms:label ref="jr:itext('where-heard_tv')"/>
-<xforms:value>tv</xforms:value>
-</xforms:item>
-<xforms:item id="friends-family">
-<xforms:label ref="jr:itext('where-heard_friends-family')"/>
-<xforms:value>friends-family</xforms:value>
-</xforms:item>
-<xforms:item id="newspaper">
-<xforms:label ref="jr:itext('where-heard_newspaper')"/>
-<xforms:value>newspaper</xforms:value>
-</xforms:item>
-<xforms:item id="street-drama-theater">
-<xforms:label ref="jr:itext('where-heard_street-drama-theater')"/>
-<xforms:value>street-drama-theater</xforms:value>
-</xforms:item>
-<xforms:item id="other">
-<xforms:label ref="jr:itext('where-heard_other')"/>
-<xforms:value>other</xforms:value>
-</xforms:item>
-</xforms:select1>
-</xforms:group>
-</xhtml:body>
+      </xforms:instance>
+      <xforms:bind id="questions-bind" nodeset="questions" name="questions"/>
+      <xforms:bind id="flu-type-bind" nodeset="questions/flu-type" name="flu-type" type="xs:string" required="true()"/>
+      <xforms:bind id="masks-noticed-bind" nodeset="questions/masks-noticed" name="masks-noticed" type="xs:string" required="true()"/>
+      <xforms:bind id="mask-reaction-bind" nodeset="questions/mask-reaction" name="mask-reaction" type="xs:string" required="true()"/>
+      <xforms:bind id="where-heard-bind" nodeset="questions/where-heard" name="where-heard" type="xforms:string" relevant="../heard-messages= 'y'"/>
+      <xforms:bind id="heard-messages-bind" nodeset="questions/heard-messages" name="heard-messages"/>
+      <jr:itext>
+        <jr:translation lang="en">
+          <jr:text id="questions">
+            <jr:value>Questions</jr:value>
+          </jr:text>
+          <jr:text id="flu-type">
+            <jr:value>What type of Flu are people in your community most worried about?</jr:value>
+          </jr:text>
+          <jr:text id="masks-noticed">
+            <jr:value>Are you noticing more people this week wearing face masks to protect themselves from Flu?</jr:value>
+          </jr:text>
+          <jr:text id="mask-reaction">
+            <jr:value>When you see people wearing face masks, how does it make you feel?</jr:value>
+          </jr:text>
+          <jr:text id="heard-messages">
+            <jr:value>Recently, have you seen any materials or activities or heard any messages about the flu?</jr:value>
+          </jr:text>
+          <jr:text id="where-heard">
+            <jr:value>Where did you see or hear information about the flu?</jr:value>
+          </jr:text>
+          <jr:text id="flu-type_H5N1">
+            <jr:value>H5N1</jr:value>
+          </jr:text>
+          <jr:text id="flu-type_H1N1">
+            <jr:value>H1N1</jr:value>
+          </jr:text>
+          <jr:text id="flu-type_bird-flu">
+            <jr:value>Bird Flu</jr:value>
+          </jr:text>
+          <jr:text id="flu-type_swine-flu">
+            <jr:value>Swine Flu</jr:value>
+          </jr:text>
+          <jr:text id="masks-noticed_2">
+            <jr:value>A lot more</jr:value>
+          </jr:text>
+          <jr:text id="masks-noticed_1">
+            <jr:value>A few more</jr:value>
+          </jr:text>
+          <jr:text id="masks-noticed_0">
+            <jr:value>About the same</jr:value>
+          </jr:text>
+          <jr:text id="masks-noticed_-1">
+            <jr:value>A little less</jr:value>
+          </jr:text>
+          <jr:text id="masks-noticed_-2">
+            <jr:value>A lot less</jr:value>
+          </jr:text>
+          <jr:text id="mask-reaction_protected">
+            <jr:value>They are sick and protecting me</jr:value>
+          </jr:text>
+          <jr:text id="mask-reaction_at-risk">
+            <jr:value>They are sick and putting me a risk </jr:value>
+          </jr:text>
+          <jr:text id="mask-reaction_optimistic">
+            <jr:value>They are not sick but trying to prevent infection</jr:value>
+          </jr:text>
+          <jr:text id="heard-messages_y">
+            <jr:value>Yes</jr:value>
+          </jr:text>
+          <jr:text id="heard-messages_n">
+            <jr:value>No</jr:value>
+          </jr:text>
+          <jr:text id="where-heard_radio">
+            <jr:value>Radio</jr:value>
+          </jr:text>
+          <jr:text id="where-heard_tv">
+            <jr:value>TV</jr:value>
+          </jr:text>
+          <jr:text id="where-heard_friends-family">
+            <jr:value>Friends/Family</jr:value>
+          </jr:text>
+          <jr:text id="where-heard_newspaper">
+            <jr:value>Newspaper</jr:value>
+          </jr:text>
+          <jr:text id="where-heard_street-drama-theater">
+            <jr:value>Street drama/theater</jr:value>
+          </jr:text>
+          <jr:text id="where-heard_other">
+            <jr:value>Other</jr:value>
+          </jr:text>
+        </jr:translation>
+      </jr:itext>
+    </xforms:model>
+  </xhtml:head>
+  <xhtml:body>
+    <xforms:group bind="questions-bind">
+      <xforms:label ref="jr:itext('questions')"/>
+      <xforms:select1 bind="flu-type-bind" id="flu-type-control">
+        <xforms:label ref="jr:itext('flu-type')"/>
+        <xforms:item id="H5N1">
+          <xforms:label ref="jr:itext('flu-type_H5N1')"/>
+          <xforms:value>H5N1</xforms:value>
+        </xforms:item>
+        <xforms:item id="H1N1">
+          <xforms:label ref="jr:itext('flu-type_H1N1')"/>
+          <xforms:value>H1N1</xforms:value>
+        </xforms:item>
+        <xforms:item id="bird-flu">
+          <xforms:label ref="jr:itext('flu-type_bird-flu')"/>
+          <xforms:value>bird-flu</xforms:value>
+        </xforms:item>
+        <xforms:item id="swine-flu">
+          <xforms:label ref="jr:itext('flu-type_swine-flu')"/>
+          <xforms:value>swine-flu</xforms:value>
+        </xforms:item>
+      </xforms:select1>
+      <xforms:select1 bind="masks-noticed-bind" id="masks-noticed-control">
+        <xforms:label ref="jr:itext('masks-noticed')"/>
+        <xforms:item id="2">
+          <xforms:label ref="jr:itext('masks-noticed_2')"/>
+          <xforms:value>2</xforms:value>
+        </xforms:item>
+        <xforms:item id="1">
+          <xforms:label ref="jr:itext('masks-noticed_1')"/>
+          <xforms:value>1</xforms:value>
+        </xforms:item>
+        <xforms:item id="0">
+          <xforms:label ref="jr:itext('masks-noticed_0')"/>
+          <xforms:value>0</xforms:value>
+        </xforms:item>
+        <xforms:item id="-1">
+          <xforms:label ref="jr:itext('masks-noticed_-1')"/>
+          <xforms:value>-1</xforms:value>
+        </xforms:item>
+        <xforms:item id="-2">
+          <xforms:label ref="jr:itext('masks-noticed_-2')"/>
+          <xforms:value>-2</xforms:value>
+        </xforms:item>
+      </xforms:select1>
+      <xforms:select1 bind="mask-reaction-bind" id="mask-reaction-control">
+        <xforms:label ref="jr:itext('mask-reaction')"/>
+        <xforms:item id="protected">
+          <xforms:label ref="jr:itext('mask-reaction_protected')"/>
+          <xforms:value>protected</xforms:value>
+        </xforms:item>
+        <xforms:item id="at-risk">
+          <xforms:label ref="jr:itext('mask-reaction_at-risk')"/>
+          <xforms:value>at-risk</xforms:value>
+        </xforms:item>
+        <xforms:item id="optimistic">
+          <xforms:label ref="jr:itext('mask-reaction_optimistic')"/>
+          <xforms:value>optimistic</xforms:value>
+        </xforms:item>
+      </xforms:select1>
+      <xforms:select1 bind="heard-messages-bind" id="heard-messages-control">
+        <xforms:label ref="jr:itext('heard-messages')"/>
+        <xforms:item id="y">
+          <xforms:label ref="jr:itext('heard-messages_y')"/>
+          <xforms:value>y</xforms:value>
+        </xforms:item>
+        <xforms:item id="n">
+          <xforms:label ref="jr:itext('heard-messages_n')"/>
+          <xforms:value>n</xforms:value>
+        </xforms:item>
+      </xforms:select1>
+      <xforms:select1 bind="where-heard-bind" id="where-heard-control">
+        <xforms:label ref="jr:itext('where-heard')"/>
+        <xforms:item id="radio">
+          <xforms:label ref="jr:itext('where-heard_radio')"/>
+          <xforms:value>radio</xforms:value>
+        </xforms:item>
+        <xforms:item id="tv">
+          <xforms:label ref="jr:itext('where-heard_tv')"/>
+          <xforms:value>tv</xforms:value>
+        </xforms:item>
+        <xforms:item id="friends-family">
+          <xforms:label ref="jr:itext('where-heard_friends-family')"/>
+          <xforms:value>friends-family</xforms:value>
+        </xforms:item>
+        <xforms:item id="newspaper">
+          <xforms:label ref="jr:itext('where-heard_newspaper')"/>
+          <xforms:value>newspaper</xforms:value>
+        </xforms:item>
+        <xforms:item id="street-drama-theater">
+          <xforms:label ref="jr:itext('where-heard_street-drama-theater')"/>
+          <xforms:value>street-drama-theater</xforms:value>
+        </xforms:item>
+        <xforms:item id="other">
+          <xforms:label ref="jr:itext('where-heard_other')"/>
+          <xforms:value>other</xforms:value>
+        </xforms:item>
+      </xforms:select1>
+    </xforms:group>
+  </xhtml:body>
 </xhtml:html>
 
